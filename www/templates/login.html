@@ -1,0 +1,25 @@
+<ion-view view-title="Login">
+  <ion-content class="stable-bg">
+    <form name="form" ng-submit="doLogin()" novalidate>
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">RUT</span>
+          <input type="text" ng-model="login.user" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Clave</span>
+          <input type="password" ng-model="login.password" required>
+        </label>
+      </div>
+      <div class="padding-horizontal">
+        <button class="button button-positive button-block" ng-disabled="form.$invalid">
+          Iniciar sesión
+        </button>
+      </div>
+    </form>
+    <div class="text-center padding" ng-if="wrongPassword">
+      <p class="assertive">Credenciales incorrectas</p>
+      <p class="calm">Usa RUT <strong>11114468-9</strong> y clave <strong>4468</strong>.</p>
+    </div>
+  </ion-content>
+</ion-view>
