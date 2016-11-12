@@ -75,6 +75,18 @@ angular.module('bci.controllers', [])
   $scope.getProfile();
 })
 
-.controller('MovimientosCtrl', function($scope) {
-
+.controller('MovimientosCtrl', function($scope, Transferencias, Storage) {
+  $scope.getTransferencias = function() {
+    Transferencias.lista(Storage.get('bci.user')).get()
+    .$promise.then(
+      function(response) {
+        $scope.transferencias = response;
+      },
+      function(error) {}
+    )
+    .finally(function() {
+      $scope.$broadcast('scroll.refreshComplete');
+    });
+  }
+  $scope.getTransferencias();
 });

@@ -1,5 +1,17 @@
-<ion-view view-title="Movimientos">
+<ion-view view-title="Transferencias">
   <ion-content class="stable-bg">
-
+    <ion-refresher on-refresh="getTransferencias()"></ion-refresher>
+    <div class="text-center padding" ng-if="transferencias == null">
+      <ion-spinner></ion-spinner>
+    </div>
+    <div ng-if="transferencias">
+      <ion-list>
+        <ion-item ng-repeat="transferencia in transferencias">
+          <span class="item-note positive">{{transferencia.monto | currency:$:0 }}</span>
+          <h2>{{transferencia.fecha | date:'dd-MM-yyyy \'a las\' HH:mm'}}</h2>
+          <p>{{transferencia.estado}}</p>
+        </ion-item>
+      </ion-list>
+    </div>
   </ion-content>
 </ion-view>

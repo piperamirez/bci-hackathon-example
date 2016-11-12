@@ -17,7 +17,21 @@ angular.module('bci.services', ['bci.config'])
           headers: {'rut': rut}
         }
       })
-    },
+    }
+  }
+})
+
+.factory('Transferencias', function($resource, conf) {
+  return {
+    lista : function(rut) {
+      return $resource(conf.api + '/transferencias', null, {
+        get : {
+          method: 'GET',
+          headers: {'rut': rut},
+          isArray: true
+        }
+      })
+    }
   }
 })
 
