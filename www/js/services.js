@@ -10,6 +10,24 @@ angular.module('bci.services', ['bci.config'])
         }
       })
     },
+    perfil : function(rut) {
+      return $resource(conf.api + '/cliente/perfil', null, {
+        get : {
+          method: 'GET',
+          headers: {'rut': rut}
+        }
+      })
+    },
+  }
+})
 
+.factory('Storage', function() {
+  return {
+    save : function(key, value) {
+      localStorage.setItem(key, JSON.stringify(value));
+    },
+    get : function(key) {
+      return JSON.parse(localStorage.getItem(key));
+    }
   }
 });

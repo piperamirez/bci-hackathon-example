@@ -1,5 +1,28 @@
 <ion-view view-title="Inicio">
   <ion-content class="stable-bg">
-
+    <div class="padding text-center" ng-if="profile == null">
+      <ion-spinner></ion-spinner>
+    </div>
+    <div ng-if="profile">
+      <div class="text-center padding-top">
+        <img src="img/avatar-placeholder.svg">
+        <div><strong>{{profile.nombre}}</strong></div>
+        <p class="royal">{{profile.rut}}</p>
+      </div>
+      <div class="card">
+        <div class="item item-icon-left item-text-wrap text-right">
+          <h1 class="balanced">{{profile.saldo_total_cuentas}}</h1>
+          <i class="icon icon-lg ion-social-usd positive"></i>
+          <h2 class="royal">Saldo en cuentas</h2>
+        </div>
+      </div>
+      <div class="card">
+        <div class="item item-icon-left item-text-wrap text-right">
+          <h1 class="balanced">{{profile.saldo_total_tarjetas_de_credito}}</h1>
+          <i class="icon icon-lg ion-card positive"></i>
+          <h2 class="royal">Saldo en tarjetas de crédito</h2>
+        </div>
+      </div>
+    </div>
   </ion-content>
 </ion-view>

@@ -41,7 +41,8 @@ angular.module('bci', ['ionic', 'bci.controllers', 'bci.services', 'bci.config',
   .state('app', {
     url: '/app',
     templateUrl: 'templates/app.html',
-    controller: 'AppCtrl'
+    controller: 'AppCtrl',
+    params: {userId: null}
   })
 
   .state('help', {

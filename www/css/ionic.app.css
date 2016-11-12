@@ -9798,3 +9798,6 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
+
+i.icon.icon-lg {
+  font-size: 36px; }

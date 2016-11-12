@@ -14,7 +14,7 @@ angular.module('bci.controllers', [])
     .$promise.then(
       function(response) {
         if (response.mensaje == 'Login Correcto') {
-          $state.go('app.tab.inicio', {user: $scope.user})
+          $state.go('app.tab.inicio', {userId: $scope.login.user})
         }
         else {
           $scope.wrongPassword = true;
@@ -27,7 +27,7 @@ angular.module('bci.controllers', [])
     .finally(function() {
       $scope.logingIn = false;
     });
-    
+
   }
 
   $ionicModal.fromTemplateUrl('templates/help.html', {
@@ -49,14 +49,26 @@ angular.module('bci.controllers', [])
 
 })
 
-.controller('AppCtrl', function($scope, $state) {
+.controller('AppCtrl', function($scope, $state, $stateParams, Storage) {
+  if (Storage.get('bci.user') == null) {
+    Storage.save('bci.user', $stateParams.userId);
+  }
   $scope.logout = function() {
     $state.go('login');
+    Storage.save('bci.user', null);
   }
 })
 
-.controller('InicioCtrl', function($scope) {
-
+.controller('InicioCtrl', function($scope, Cliente, Storage) {
+  Cliente.perfil(Storage.get('bci.user')).get()
+  .$promise.then(
+    function(response) {
+      $scope.profile = response;
+      console.log(response);
+    },
+    function(error) {}
+  )
+  .finally(function() {});
 })
 
 .controller('MovimientosCtrl', function($scope) {

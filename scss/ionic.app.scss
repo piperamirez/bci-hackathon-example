@@ -7,3 +7,7 @@ $royal: gray !default;
 
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "www/lib/ionic/scss/ionic";
+
+i.icon.icon-lg {
+  font-size: 36px;
+}
