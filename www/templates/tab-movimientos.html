@@ -6,7 +6,7 @@
     </div>
     <div ng-if="transferencias">
       <ion-list>
-        <ion-item ng-repeat="transferencia in transferencias">
+        <ion-item ng-repeat="transferencia in transferencias | orderObjectBy:'fecha'">
           <span class="item-note positive">{{transferencia.monto | currency:$:0 }}</span>
           <h2>{{transferencia.fecha | date:'dd-MM-yyyy \'a las\' HH:mm'}}</h2>
           <p>{{transferencia.estado}}</p>

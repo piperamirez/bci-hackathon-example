@@ -89,4 +89,8 @@ angular.module('bci.controllers', [])
     });
   }
   $scope.getTransferencias();
+})
+
+.controller('CuentasCtrl', function($scope, $state, $stateParams, Storage) {
+
 });

@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('bci', ['ionic', 'bci.controllers', 'bci.services', 'bci.config', 'ngResource'])
+angular.module('bci', ['ionic', 'bci.controllers', 'bci.services', 'bci.config', 'bci.filters', 'ngResource'])
 
 .run(function($ionicPlatform, $rootScope, $state) {
   $ionicPlatform.ready(function() {
@@ -72,6 +72,16 @@ angular.module('bci', ['ionic', 'bci.controllers', 'bci.services', 'bci.config',
       'tab-movimientos': {
         templateUrl: 'templates/tab-movimientos.html',
         controller: 'MovimientosCtrl'
+      }
+    }
+  })
+
+  .state('app.tab.cuentas', {
+    url: '/cuentas',
+    views: {
+      'tab-cuentas': {
+        templateUrl: 'templates/tab-cuentas.html',
+        controller: 'CuentasCtrl'
       }
     }
   });
