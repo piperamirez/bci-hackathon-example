@@ -1,6 +1,6 @@
 angular.module('bci.filters', [])
-.filter('orderObjectBy', function(){
-  return function(input, attribute) {
+.filter('orderByDate', function(){
+  return function(input) {
     if (!angular.isObject(input)) return input;
 
     var array = [];
@@ -9,8 +9,8 @@ angular.module('bci.filters', [])
     }
 
     array.sort(function(a, b){
-      a = parseInt(a[attribute]);
-      b = parseInt(b[attribute]);
+      a = new Date((a['fecha']));
+      b = new Date((b['fecha']));
       return b - a;
     });
     return array;
