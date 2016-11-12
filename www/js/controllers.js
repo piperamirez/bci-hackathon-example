@@ -13,7 +13,7 @@ angular.module('bci.controllers', [])
     .$promise.then(
       function(response) {
         if (response.mensaje == 'Login Correcto') {
-          $state.go('tab.inicio', {user: $scope.user})
+          $state.go('app.tab.inicio', {user: $scope.user})
         }
         else {
           $scope.wrongPassword = true;
@@ -29,6 +29,12 @@ angular.module('bci.controllers', [])
     return [rut.split('-')[0], rut.split('-')[1]];
   }
 
+})
+
+.controller('AppCtrl', function($scope, $state) {
+  $scope.logout = function() {
+    $state.go('login');
+  }
 })
 
 .controller('InicioCtrl', function($scope) {

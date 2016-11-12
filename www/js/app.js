@@ -38,13 +38,19 @@ angular.module('bci', ['ionic', 'bci.controllers', 'bci.services', 'bci.config',
     controller: 'LoginCtrl'
   })
 
-  .state('tab', {
+  .state('app', {
+    url: '/app',
+    templateUrl: 'templates/app.html',
+    controller: 'AppCtrl'
+  })
+
+  .state('app.tab', {
     url: '/tab',
     abstract: true,
     templateUrl: 'templates/tabs.html'
   })
 
-  .state('tab.inicio', {
+  .state('app.tab.inicio', {
     url: '/inicio',
     views: {
       'tab-inicio': {
@@ -54,7 +60,7 @@ angular.module('bci', ['ionic', 'bci.controllers', 'bci.services', 'bci.config',
     }
   })
 
-  .state('tab.movimientos', {
+  .state('app.tab.movimientos', {
     url: '/movimientos',
     views: {
       'tab-movimientos': {
