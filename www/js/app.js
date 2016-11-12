@@ -44,6 +44,11 @@ angular.module('bci', ['ionic', 'bci.controllers', 'bci.services', 'bci.config',
     controller: 'AppCtrl'
   })
 
+  .state('help', {
+    url: '/help',
+    templateUrl: 'templates/help.html'
+  })
+
   .state('app.tab', {
     url: '/tab',
     abstract: true,

@@ -1,5 +1,11 @@
-<ion-view view-title="Login">
+<ion-view>
   <ion-content class="stable-bg">
+    <br>
+    <div class="text-center padding">
+      <img src="img/bci-logo.svg"/>
+      <br>
+      <p class="royal">App demo Hackathon Bci 2016</p>
+    </div>
     <form name="form" ng-submit="doLogin()" novalidate>
       <div class="list list-inset">
         <label class="item item-input">
@@ -12,7 +18,7 @@
         </label>
       </div>
       <div class="padding-horizontal">
-        <button class="button button-positive button-block" ng-disabled="form.$invalid">
+        <button class="button button-positive button-large button-block" ng-disabled="form.$invalid || logingIn">
           Iniciar sesión
         </button>
       </div>
@@ -21,5 +27,13 @@
       <p class="assertive">Credenciales incorrectas</p>
       <p class="calm">Usa RUT <strong>11114468-9</strong> y clave <strong>4468</strong>.</p>
     </div>
+    <br>
+    <ion-list>
+      <ion-item class="item-icon-left item-icon-right" href ng-click="openModal()">
+        <i class="icon ion-android-star energized"></i>
+        Ayuda
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>

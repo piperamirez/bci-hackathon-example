@@ -1,8 +1,9 @@
 angular.module('bci.controllers', [])
 
-.controller('LoginCtrl', function($scope, $state, Cliente) {
+.controller('LoginCtrl', function($scope, $state, $ionicModal, Cliente) {
   $scope.login = {};
   $scope.doLogin = function() {
+    $scope.logingIn = true;
     $scope.wrongPassword = false;
     var rutPart = splitRut($scope.login.user);
     Cliente.login($scope.login.user).save({
@@ -23,7 +24,24 @@ angular.module('bci.controllers', [])
         $scope.wrongPassword = true;
       }
     )
+    .finally(function() {
+      $scope.logingIn = false;
+    });
+    
   }
+
+  $ionicModal.fromTemplateUrl('templates/help.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+  $scope.openModal = function() {
+    $scope.modal.show();
+  };
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
 
   function splitRut(rut) {
     return [rut.split('-')[0], rut.split('-')[1]];
