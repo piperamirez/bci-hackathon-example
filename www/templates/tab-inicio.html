@@ -1,11 +1,12 @@
 <ion-view view-title="Inicio">
   <ion-content class="stable-bg">
+    <ion-refresher on-refresh="getProfile()"></ion-refresher>
     <div class="padding text-center" ng-if="profile == null">
       <ion-spinner></ion-spinner>
     </div>
     <div ng-if="profile">
       <div class="text-center padding-top">
-        <img src="img/avatar-placeholder.svg">
+        <img class="padding-top" src="img/avatar-placeholder.svg">
         <div><strong>{{profile.nombre}}</strong></div>
         <p class="royal">{{profile.rut}}</p>
       </div>

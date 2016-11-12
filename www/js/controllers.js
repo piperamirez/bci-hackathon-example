@@ -60,15 +60,19 @@ angular.module('bci.controllers', [])
 })
 
 .controller('InicioCtrl', function($scope, Cliente, Storage) {
-  Cliente.perfil(Storage.get('bci.user')).get()
-  .$promise.then(
-    function(response) {
-      $scope.profile = response;
-      console.log(response);
-    },
-    function(error) {}
-  )
-  .finally(function() {});
+  $scope.getProfile = function() {
+    Cliente.perfil(Storage.get('bci.user')).get()
+    .$promise.then(
+      function(response) {
+        $scope.profile = response;
+      },
+      function(error) {}
+    )
+    .finally(function() {
+      $scope.$broadcast('scroll.refreshComplete');
+    });
+  }
+  $scope.getProfile();
 })
 
 .controller('MovimientosCtrl', function($scope) {
