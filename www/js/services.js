@@ -58,6 +58,20 @@ angular.module('bci.services', ['bci.config'])
   }
 })
 
+.factory('Tarjetas', function($resource, conf) {
+  return {
+    lista : function(rut) {
+      return $resource(conf.api + '/tarjetas_de_credito', null, {
+        get : {
+          method: 'GET',
+          headers: {'rut': rut},
+          isArray: true
+        }
+      })
+    }
+  }
+})
+
 .factory('Storage', function() {
   return {
     save : function(key, value) {

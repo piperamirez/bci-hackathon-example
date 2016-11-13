@@ -121,4 +121,12 @@ angular.module('bci.controllers', [])
     });
   }
   $scope.getMovimientos();
+})
+
+.controller('TarjetasCtrl', function($scope) {
+
+})
+
+.controller('TarjetaDetailCtrl', function($scope) {
+
 });

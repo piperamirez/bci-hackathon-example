@@ -95,6 +95,27 @@ angular.module('bci', ['ionic', 'bci.controllers', 'bci.services', 'bci.config',
       }
     }
 
+  })
+
+  .state('app.tab.tarjetas', {
+    url: '/tarjetas',
+    views: {
+      'tab-tarjetas': {
+        templateUrl: 'templates/tab-tarjetas.html',
+        controller: 'TarjetasCtrl'
+      }
+    }
+  })
+
+  .state('app.tab.tarjeta', {
+    url: '/tarjeta/:idCuenta',
+    views: {
+      'tab-tarjetas': {
+        templateUrl: 'templates/tarjeta.html',
+        controller: 'TarjetaDetailCtrl'
+      }
+    }
+
   });
 
   // if none of the above states are matched, use this as the fallback

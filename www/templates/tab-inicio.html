@@ -12,16 +12,20 @@
       </div>
       <div class="card">
         <div class="item item-icon-left item-text-wrap text-right">
-          <h1 class="balanced">{{profile.saldo_total_cuentas | currency:$:0}}</h1>
-          <i class="icon icon-lg ion-social-usd positive"></i>
-          <h2 class="royal">Saldo en cuentas</h2>
+          <h2 class="positive">
+            <strong>{{profile.saldo_total_cuentas | currency:$:0}}</strong>
+          </h2>
+          <i class="icon icon-lg ion-android-list positive"></i>
+          <p class="royal">Saldo en cuentas</p>
         </div>
       </div>
       <div class="card">
         <div class="item item-icon-left item-text-wrap text-right">
-          <h1 class="balanced">{{profile.saldo_total_tarjetas_de_credito | currency:$:0}}</h1>
+          <h2 class="positive">
+            <strong>{{profile.saldo_total_tarjetas_de_credito | currency:$:0}}</strong>
+          </h2>
           <i class="icon icon-lg ion-card positive"></i>
-          <h2 class="royal">Saldo en tarjetas de crédito</h2>
+          <p class="royal">Saldo en tarjetas de crédito</p>
         </div>
       </div>
     </div>
