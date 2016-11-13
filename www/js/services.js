@@ -44,6 +44,20 @@ angular.module('bci.services', ['bci.config'])
   }
 })
 
+.factory('Movimientos', function($resource, conf) {
+  return {
+    cuenta : function(rut, cuenta) {
+      return $resource(conf.api + '/movimientos_cuenta/' + cuenta, null, {
+        get : {
+          method: 'GET',
+          headers: {'rut': rut},
+          isArray: true
+        }
+      })
+    }
+  }
+})
+
 .factory('Storage', function() {
   return {
     save : function(key, value) {

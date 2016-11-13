@@ -1,0 +1,26 @@
+<ion-view>
+  <ion-content class="stable-bg">
+    <ion-refresher on-refresh="getMovimientos()"></ion-refresher>
+    <div class="padding text-center" ng-if="!movimientos">
+      <ion-spinner></ion-spinner>
+    </div>
+    <ion-list ng-if="movimientos">
+      <ion-item class="item-icon-left" collection-repeat="movimiento in movimientos | orderByDate">
+        <i class="icon ion-ios-plus-outline balanced" ng-if="movimiento.abono"></i>
+        <i class="icon ion-ios-minus-outline assertive" ng-if="movimiento.cargo"></i>
+        <span class="item-note assertive">
+          <strong>
+            {{movimiento.cargo | currency:$:0}}
+          </strong>
+        </span>
+        <span class="item-note balanced">
+          <strong>
+            {{movimiento.abono | currency:$:0}}
+          </strong>
+        </span>
+        <p>{{movimiento.descripcion != null ? movimiento.descripcion : 'Sin descripción'}}</p>
+        <p>{{movimiento.fecha | date:'dd-MM-yyyy \'a las\' HH:mm'}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

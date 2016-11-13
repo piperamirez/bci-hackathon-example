@@ -84,6 +84,17 @@ angular.module('bci', ['ionic', 'bci.controllers', 'bci.services', 'bci.config',
         controller: 'CuentasCtrl'
       }
     }
+  })
+
+  .state('app.tab.cuenta', {
+    url: '/cuenta/:idCuenta',
+    views: {
+      'tab-cuentas': {
+        templateUrl: 'templates/cuenta.html',
+        controller: 'CuentaDetailCtrl'
+      }
+    }
+
   });
 
   // if none of the above states are matched, use this as the fallback

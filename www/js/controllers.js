@@ -105,4 +105,20 @@ angular.module('bci.controllers', [])
     });
   }
   $scope.getCuentas();
+})
+
+.controller('CuentaDetailCtrl', function($scope, $state, $stateParams, Movimientos, Storage) {
+  $scope.getMovimientos = function() {
+    Movimientos.cuenta(Storage.get('bci.user'), $stateParams.idCuenta).get()
+    .$promise.then(
+      function(response) {
+        $scope.movimientos = response;
+      },
+      function(error) {}
+    )
+    .finally(function() {
+      $scope.$broadcast('scroll.refreshComplete');
+    });
+  }
+  $scope.getMovimientos();
 });

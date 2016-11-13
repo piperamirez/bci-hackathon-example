@@ -1,8 +1,17 @@
 <ion-view>
   <ion-content class="stable-bg">
-    <ion-list>
-      <ion-item ng-repeat="cuenta in cuentas">
-        {{cuenta.tipo}}
+    <div class="text-center padding" ng-if="!cuentas">
+      <ion-spinner></ion-spinner>
+    </div>
+    <ion-list ng-if="cuentas">
+      <ion-item class="item-icon-right" ng-repeat="cuenta in cuentas" href="#/app/tab/cuenta/{{cuenta.numero}}">
+        <span class="item-note balanced">{{cuenta.cupo | currency:$:0}}</span>
+        <h2 class="positive">{{cuenta.tipo}}</h2>
+        <span class="item-note">
+          <strong class="positive">{{cuenta.saldo | currency:$:0}}</strong>
+        </span>
+        <p>No. {{cuenta.numero}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
       </ion-item>
     </ion-list>
   </ion-content>
