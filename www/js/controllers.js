@@ -91,6 +91,18 @@ angular.module('bci.controllers', [])
   $scope.getTransferencias();
 })
 
-.controller('CuentasCtrl', function($scope, $state, $stateParams, Storage) {
-
+.controller('CuentasCtrl', function($scope, $state, $stateParams, Cliente, Storage) {
+  $scope.getCuentas = function() {
+    Cliente.cuentas(Storage.get('bci.user')).get()
+    .$promise.then(
+      function(response) {
+        $scope.cuentas = response;
+      },
+      function(error) {}
+    )
+    .finally(function() {
+      $scope.$broadcast('scroll.refreshComplete');
+    });
+  }
+  $scope.getCuentas();
 });

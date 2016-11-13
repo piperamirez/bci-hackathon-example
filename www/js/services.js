@@ -17,6 +17,15 @@ angular.module('bci.services', ['bci.config'])
           headers: {'rut': rut}
         }
       })
+    },
+    cuentas : function(rut) {
+      return $resource(conf.api + '/cliente/cuentas', null, {
+        get : {
+          method: 'GET',
+          headers: {'rut': rut},
+          isArray: true
+        }
+      })
     }
   }
 })
