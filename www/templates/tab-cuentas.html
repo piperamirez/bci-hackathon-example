@@ -1,18 +1,23 @@
-<ion-view>
+<ion-view view-title="Cuentas">
   <ion-content class="stable-bg">
-    <div class="text-center padding" ng-if="!cuentas">
-      <ion-spinner></ion-spinner>
+    <ion-refresher on-refresh="getCuentas()"></ion-refresher>
+    <div class="card" ng-repeat="cuenta in cuentas" ng-if="cuentas">
+      <div class="text-center padding" ng-if="!cuentas">
+        <ion-spinner></ion-spinner>
+      </div>
+      <ion-list>
+        <ion-item class="item-icon-right" href="#/app/tab/cuenta/{{cuenta.numero}}">
+          <span class="item-note">Nro. {{cuenta.numero}}</span>
+          <h2>{{cuenta.tipo}}</h2>
+          <i class="icon ion-chevron-right icon-accessory"></i>
+        </ion-item>
+        <ion-item>
+          <span class="item-note balanced">{{cuenta.cupo | currency:$:0}}</span>
+          <p ng-if="cuenta.cupo">Cupo</p>
+          <span class="item-note positive">{{cuenta.saldo | currency:$:0}}</span>
+          <p ng-if="cuenta.saldo">Saldo</p>
+        </ion-item>
+      </ion-list>
     </div>
-    <ion-list ng-if="cuentas">
-      <ion-item class="item-icon-right" ng-repeat="cuenta in cuentas" href="#/app/tab/cuenta/{{cuenta.numero}}">
-        <span class="item-note balanced">{{cuenta.cupo | currency:$:0}}</span>
-        <h2 class="positive">{{cuenta.tipo}}</h2>
-        <span class="item-note">
-          <strong class="positive">{{cuenta.saldo | currency:$:0}}</strong>
-        </span>
-        <p>No. {{cuenta.numero}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
-      </ion-item>
-    </ion-list>
   </ion-content>
 </ion-view>
